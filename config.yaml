@@ -23,6 +23,14 @@ options:
     type: string
     default: ""
     description: "The external URI of this GitLab install. This will be used to configure GitLab, and any reverse proxy configured via the reverseproxy relation. Defaults to the fqdn of the unit."
+  external_registry_url:
+    type: string
+    default: ""
+    description: "The external registry URI."
+  external_registry_port:
+    type: int
+    default: 5050
+    description: "The external registry URI."
   http_port:
     type: int
     default: 80

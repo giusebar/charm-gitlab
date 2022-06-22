@@ -77,6 +77,13 @@ class GitlabHelper:
             fqdn = "http://{}".format(socket.getfqdn())
             return fqdn
 
+    def get_external_registry_uri(self):
+        """Return the configured external URL from Charm configuration."""
+        configured_value = self.charm_config["external_registry_url"]
+        if configured_value:
+            return configured_value
+        return self.get_external_uri()
+
     def get_sshhost(self):
         """Return the host used when configuring SSH access to GitLab."""
         url = urlparse(self.get_external_uri())
@@ -551,6 +558,8 @@ class GitlabHelper:
                     "email_display_name": self.charm_config.get("email_display_name"),
                     "email_reply_to": self.charm_config.get("email_reply_to"),
                     "url": self.get_external_uri(),
+                    "registry_url": self.get_external_registry_uri(),
+                    "registry_port": self.charm_config.get("external_registry_port")
                 },
             )
         elif self.mysql_configured():

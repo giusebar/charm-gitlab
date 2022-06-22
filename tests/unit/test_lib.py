@@ -46,6 +46,15 @@ def test_get_external_uri(libgitlab):
     assert result == "foo.bar.com"
 
 
+def test_get_external_registry_uri(libgitlab):
+    """Test get_external_uri."""
+    result = libgitlab.get_external_registry_uri()
+    assert result == "http://mock.example.com"
+    libgitlab.charm_config["external_url"] = "foo.bar.com"
+    result = libgitlab.get_external_registry_uri()
+    assert result == "foo.bar.com"
+
+
 def test_get_sshhost(libgitlab):
     """Test get_sshhost."""
     result = libgitlab.get_sshhost()

@@ -525,7 +525,7 @@ gitlab_rails['backup_keep_time'] = 1
 ##! Docs: https://docs.gitlab.com/ce/administration/container_registry.html
 ################################################################################
 
-# registry_external_url 'https://registry.gitlab.example.com'
+registry_external_url '{{ registry_url }}:{{ registry_port }}'
 
 ### Settings used by GitLab application
 # gitlab_rails['registry_enabled'] = true
