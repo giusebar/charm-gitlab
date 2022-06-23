@@ -19,3 +19,6 @@
 [submodule "layers/layer-backup"]
 	path = layers/layer-backup
 	url = https://github.com/pirate-charmers/layer-backup.git
+[submodule "interfaces/interface-redis"]
+	path = interfaces/interface-redis
+	url = https://github.com/canonical/interface-redis.git
