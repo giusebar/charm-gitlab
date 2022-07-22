@@ -525,7 +525,13 @@ gitlab_rails['backup_keep_time'] = 0
 ##! Docs: https://docs.gitlab.com/ce/administration/container_registry.html
 ################################################################################
 
-registry_external_url '{{ registry_url }}:{{ registry_port }}'
+registry_external_url '{{ registry_url }}'
+registry_nginx['listen_port'] = {{ registry_port }}
+registry_nginx['listen_https'] = false
+registry_nginx['proxy_set_headers'] = {
+ "X-Forwarded-Proto" => "https",
+ "X-Forwarded-Ssl" => "on"
+}
 
 ### Settings used by GitLab application
 # gitlab_rails['registry_enabled'] = true
